@@ -32,27 +32,27 @@ export function ViewStrategyDialog({
                 <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
-                            <p className="text-sm font-medium">Année cible</p>
+                            <p className="text-sm font-semibold">Année cible</p>
                             <p className="text-sm text-muted-foreground">{strategy.targetYear}</p>
                         </div>
 
                         <div className="space-y-1">
-                            <p className="text-sm font-medium">Taux de réussite</p>
+                            <p className="text-sm font-semibold">Taux de réussite</p>
                             <p className="text-sm text-muted-foreground">{strategy.successRate}%</p>
                         </div>
 
                         <div className="space-y-1">
-                            <p className="text-sm font-medium">Carbone évité (tCO2e/an)</p>
+                            <p className="text-sm font-semibold">Carbone évité (tCO2e/an)</p>
                             <p className="text-sm text-muted-foreground">{strategy.carbonAvoided} tCO2e/an</p>
                         </div>
 
                         <div className="space-y-1">
-                            <p className="text-sm font-medium">Carbone évité (%)</p>
+                            <p className="text-sm font-semibold">Carbone évité (%)</p>
                             <p className="text-sm text-muted-foreground">{strategy.carbonAvoidedPercentage}%</p>
                         </div>
 
                         <div className="space-y-1">
-                            <p className="text-sm font-medium">Statut</p>
+                            <p className="text-sm font-semibold">Statut</p>
                             <p className="text-sm text-muted-foreground">
                                 {strategy.status === 'calculated' ? 'Calculé' : 'En cours'}
                             </p>
