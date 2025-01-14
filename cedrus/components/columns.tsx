@@ -33,6 +33,11 @@ export const columns: ColumnDef<Strategy>[] = [
     {
         id: "actions",
         header: "Actions",
-        cell: ({ row }) => <StrategyActions row={row} />,
+        cell: ({ row, table }) => (
+            <StrategyActions 
+                row={row}
+                onDelete={(id: string) => table.options.meta?.onDelete(id)}
+            />
+        ),
     }
 ];

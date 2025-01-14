@@ -69,6 +69,11 @@ export default function Home() {
 		)
 	};
 
+	const handleDeleteStrategy = (id: string) => {
+		setData((prev) => prev.filter((strategy) => strategy.id !== id))
+		setFilteredData((prev) => prev.filter((strategy) => strategy.id !== id))
+	};
+
 	const minYear = Math.min(...data.map((strategy) => strategy.targetYear));
   	const maxYear = Math.max(...data.map((strategy) => strategy.targetYear));
 
@@ -93,7 +98,11 @@ export default function Home() {
 					<AddStrategyDialog onAddStrategy={handleAddStrategy} />
 				</div>
 			</div>
-			<DataTable columns={columns} data={filteredData} />
+			<DataTable 
+				columns={columns} 
+				data={filteredData}
+				onDelete={handleDeleteStrategy}
+			/>
 		</div>
 	);
 }
