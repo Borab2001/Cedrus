@@ -32,6 +32,9 @@ export default function Home() {
 		setData((prev) => prev.filter((strategy) => strategy.targetYear >= years[0] && strategy.targetYear <= years[1]));
 	};
 
+	const minYear = Math.min(...data.map((strategy) => strategy.targetYear))
+  	const maxYear = Math.max(...data.map((strategy) => strategy.targetYear))
+
 
 	return (
 		<div className="min-h-screen mx-auto container p-8 font-[family-name:var(--font-geist-sans)]">
@@ -46,8 +49,8 @@ export default function Home() {
 				<div className="flex items-center space-x-2">
 					<FilterDialog
 						onFilter={handleFilter}
-						minYear={2020}
-						maxYear={2050}
+						minYear={minYear}
+						maxYear={maxYear}
 					/>
 					<AddStrategyDialog onAddStrategy={handleAddStrategy} />
 				</div>

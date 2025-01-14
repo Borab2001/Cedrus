@@ -15,13 +15,13 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 
 interface FilterDialogProps {
-  onFilter: (years: [number, number]) => void;
-  minYear: number;
-  maxYear: number;
+    onFilter: (years: [number, number]) => void;
+    minYear: number;
+    maxYear: number;
 }
 
 export function FilterDialog({ onFilter, minYear, maxYear }: FilterDialogProps) {
-  const [years, setYears] = useState<[number, number]>([minYear, maxYear]);
+    const [years, setYears] = useState<[number, number]>([minYear, maxYear]);
 
     return (
         <Dialog>
