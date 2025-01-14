@@ -1,14 +1,13 @@
 "use client";
 
-import { ListFilter } from "lucide-react";
 import { useState } from "react";
 
 import { Strategy } from "@/types/strategy";
 
 import { AddStrategyDialog } from "@/components/add-strategy-dialog";
+import { FilterDialog } from "@/components/filter-dialog";
 import { columns } from "@/components/columns";
 import { DataTable } from "@/components/data-table";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 
@@ -29,6 +28,10 @@ export default function Home() {
 		setData((prev) => [...prev, strategy]);
 	};
 
+	const handleFilter = (years: [number, number]) => {
+		setData((prev) => prev.filter((strategy) => strategy.targetYear >= years[0] && strategy.targetYear <= years[1]));
+	};
+
 
 	return (
 		<div className="min-h-screen mx-auto container p-8 font-[family-name:var(--font-geist-sans)]">
@@ -41,10 +44,11 @@ export default function Home() {
 				className="max-w-sm"
 				/>
 				<div className="flex items-center space-x-2">
-					<Button variant="outline">
-						<ListFilter />
-						Filtres
-					</Button>
+					<FilterDialog
+						onFilter={handleFilter}
+						minYear={2020}
+						maxYear={2050}
+					/>
 					<AddStrategyDialog onAddStrategy={handleAddStrategy} />
 				</div>
 			</div>

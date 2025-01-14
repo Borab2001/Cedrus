@@ -1,11 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { ListFilter } from "lucide-react";
+
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { Filter } from "lucide-react";
 
 interface FilterDialogProps {
   onFilter: (years: [number, number]) => void;
@@ -20,7 +27,7 @@ export function FilterDialog({ onFilter, minYear, maxYear }: FilterDialogProps) 
         <Dialog>
             <DialogTrigger asChild>
                 <Button variant="outline">
-                    <Filter className="mr-2 h-4 w-4" />
+                    <ListFilter />
                     Filtres
                 </Button>
             </DialogTrigger>
@@ -31,7 +38,7 @@ export function FilterDialog({ onFilter, minYear, maxYear }: FilterDialogProps) 
                 </DialogHeader>
                 
                 <div className="grid gap-4 py-4">
-                    <div className="grid gap-2">
+                    <div className="grid gap-4">
                         <Label>Année cible (entre {years[0]} et {years[1]})</Label>
                         <Slider
                             min={minYear}
