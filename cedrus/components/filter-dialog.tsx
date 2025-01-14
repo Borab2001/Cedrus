@@ -22,9 +22,25 @@ interface FilterDialogProps {
 
 export function FilterDialog({ onFilter, minYear, maxYear }: FilterDialogProps) {
     const [years, setYears] = useState<[number, number]>([minYear, maxYear]);
+    const [open, setOpen] = useState(false)
+
+    const handleYearChange = (newYears: number[]) => {
+        setYears(newYears as [number, number])
+    }
+
+    const handleApplyFilter = () => {
+        onFilter(years)
+        setOpen(false)
+    }
+
+    const handleResetFilter = () => {
+        setYears([minYear, maxYear])
+        onFilter([minYear, maxYear])
+        setOpen(true)
+    }
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button variant="outline">
                     <ListFilter />
@@ -43,13 +59,22 @@ export function FilterDialog({ onFilter, minYear, maxYear }: FilterDialogProps) 
                         <Slider
                             min={minYear}
                             max={maxYear}
+                            step={1}
                             value={years}
-                            onValueChange={(value) => {
-                                setYears(value as [number, number]);
-                                onFilter(value as [number, number]);
-                            }}
+                            onValueChange={handleYearChange}
                         />
                     </div>
+                    <div className="flex justify-between text-sm text-muted-foreground">
+                        <span>{minYear}</span>
+                        <span>{maxYear}</span>
+                    </div>
+                </div>
+                
+                <div className="flex justify-end space-x-2">
+                    <Button variant="outline" onClick={handleResetFilter}>
+                        Réinitialiser
+                    </Button>
+                    <Button onClick={handleApplyFilter}>Appliquer</Button>
                 </div>
             </DialogContent>
         </Dialog>
