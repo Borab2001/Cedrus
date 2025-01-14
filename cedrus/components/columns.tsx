@@ -2,6 +2,8 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Strategy } from "@/types/strategy"
+import { StrategyActions } from "./strategy-actions";
+
 
 export const columns: ColumnDef<Strategy>[] = [
     {
@@ -31,6 +33,6 @@ export const columns: ColumnDef<Strategy>[] = [
     {
         id: "actions",
         header: "Actions",
-        cell: () => <span>Actions ici</span>,
+        cell: ({ row }) => <StrategyActions row={row} />,
     }
 ];
