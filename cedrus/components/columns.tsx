@@ -60,8 +60,7 @@ export const columns: ColumnDef<Strategy>[] = [
         cell: ({ row, table }) => (
             <StrategyActions 
                 row={row}
-                onDelete={(id: string) => table.options.meta?.onDelete(id)}
-            />
+                onDelete={(id: string) => (table.options.meta as { onDelete: (id: string) => void })?.onDelete(id)}            />
         ),
     }
 ];
