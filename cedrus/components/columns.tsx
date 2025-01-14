@@ -1,16 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-
-export interface Strategy {
-    id: string
-    name: string
-    targetYear: number
-    successRate: number
-    carbonAvoided: number
-    carbonAvoidedPercentage: number
-    status: 'calculated' | 'in_progress'
-}
+import { Strategy } from "@/types/strategy"
 
 export const columns: ColumnDef<Strategy>[] = [
     {
