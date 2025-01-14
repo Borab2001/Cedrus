@@ -1,7 +1,9 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+import { cn } from "@/lib/utils";
 import { Strategy } from "@/types/strategy"
+
 import { StrategyActions } from "./strategy-actions";
 import { Badge } from "./ui/badge";
 
@@ -33,8 +35,21 @@ export const columns: ColumnDef<Strategy>[] = [
         cell: ({ row }) => {
             const status = row.getValue("status") as string
             return (
-                <Badge variant={status === 'calculated' ? 'secondary' : 'outline'}>
-                    {status === 'calculated' ? 'Calculé' : 'En cours'}
+                <Badge 
+                    variant="secondary"
+                    className={cn(
+                        "gap-1.5 pointer-events-none",
+                        status === 'calculated' ? "bg-emerald-500/10" : "bg-amber-500/10"
+                    )}
+                >
+                    <span 
+                        className={cn(
+                        "size-1.5 rounded-full",
+                        status === 'calculated' ? "bg-emerald-500" : "bg-amber-500"
+                        )} 
+                        aria-hidden="true"
+                    ></span>
+                        {status === 'calculated' ? 'Calculé' : 'En cours'}
                 </Badge>
             )
             },
