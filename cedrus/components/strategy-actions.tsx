@@ -8,6 +8,7 @@ import { Strategy } from "@/types/strategy";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { ViewStrategyDialog } from "./view-strategy-dialog";
+import { useToast } from "@/hooks/use-toast";
 
 
 interface StrategyActionsProps {
@@ -17,6 +18,17 @@ interface StrategyActionsProps {
 
 export function StrategyActions({ row, onDelete }: StrategyActionsProps) {
     const strategy = row.original;
+    const { toast } = useToast()
+
+    const handleDelete = () => {
+        if (onDelete) {
+        onDelete(strategy.id)
+        toast({
+            title: "Stratégie supprimée",
+            description: `La stratégie "${strategy.name}" a été supprimée.`,
+        })
+        }
+    }
 
     return (
         <DropdownMenu>
@@ -36,7 +48,7 @@ export function StrategyActions({ row, onDelete }: StrategyActionsProps) {
 
                 <DropdownMenuItem 
                     className="text-destructive focus:text-destructive focus:bg-destructive/10" 
-                    onClick={() => onDelete?.(strategy.id)}
+                    onClick={handleDelete}
                 >
                     <Trash2 className="mr-2 h-4 w-4" />
                     Supprimer
