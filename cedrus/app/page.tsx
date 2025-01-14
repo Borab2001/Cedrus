@@ -1,10 +1,17 @@
+import { ListFilter } from "lucide-react";
+
+import { AddStrategyDialog } from "@/components/add-strategy-dialog";
 import { columns } from "@/components/columns";
 import { DataTable } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ListFilter, Plus } from "lucide-react";
 
 export default function Home() {
+
+	const handleAddStrategy = (newStrategy: { name: string; targetYear: number }) => {
+		console.log("Ajouté :", newStrategy);
+	};
+
 	return (
 		<div className="min-h-screen mx-auto container p-8 font-[family-name:var(--font-geist-sans)]">
 			<h1 className="text-2xl font-semibold">Stratégies</h1>
@@ -20,10 +27,7 @@ export default function Home() {
 						<ListFilter />
 						Filtres
 					</Button>
-					<Button variant="default">
-						<Plus />
-						Ajouter
-					</Button>
+					<AddStrategyDialog onAddStrategy={handleAddStrategy} />
 				</div>
 			</div>
 			<DataTable columns={columns} data={[]} />
