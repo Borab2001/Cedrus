@@ -13,13 +13,13 @@ import { Input } from "@/components/ui/input";
 
 const initialData: Strategy[] = [
 	{
-	  id: "1",
-	  name: "Top 15 Taxonomie + DPE + CRREM 2045",
-	  targetYear: 2045,
-	  successRate: 48,
-	  carbonAvoided: 666,
-	  carbonAvoidedPercentage: 13.7,
-	  status: "calculated",
+		id: "1",
+		name: "Top 15 Taxonomie + DPE + CRREM 2045",
+		targetYear: 2045,
+		successRate: 48,
+		carbonAvoided: 666,
+		carbonAvoidedPercentage: 13.7,
+		status: "calculated",
 	},
 	{
 		id: "2",
@@ -35,7 +35,7 @@ const initialData: Strategy[] = [
 
 export default function Home() {
 
-	const [data, setData] = useState<Strategy[]>([]);
+	const [data, setData] = useState<Strategy[]>(initialData);
 	const [filteredData, setFilteredData] = useState<Strategy[]>(initialData);
 
 	const handleAddStrategy = (newStrategy: { name: string; targetYear: number }) => {
