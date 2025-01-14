@@ -50,7 +50,7 @@ export function FilterDialog({ onFilter, minYear, maxYear }: FilterDialogProps) 
             
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Filtrer les stratégies</DialogTitle>
+                    <DialogTitle className="font-semibold">Filtrer les stratégies</DialogTitle>
                 </DialogHeader>
                 
                 <div className="grid gap-4 py-4">
