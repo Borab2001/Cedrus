@@ -3,6 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Strategy } from "@/types/strategy"
 import { StrategyActions } from "./strategy-actions";
+import { Badge } from "./ui/badge";
 
 
 export const columns: ColumnDef<Strategy>[] = [
@@ -29,7 +30,15 @@ export const columns: ColumnDef<Strategy>[] = [
     {
         accessorKey: "status",
         header: "Statut",
-    },
+        cell: ({ row }) => {
+            const status = row.getValue("status") as string
+            return (
+                <Badge variant={status === 'calculated' ? 'secondary' : 'outline'}>
+                    {status === 'calculated' ? 'Calculé' : 'En cours'}
+                </Badge>
+            )
+            },
+        },
     {
         id: "actions",
         header: "Actions",
