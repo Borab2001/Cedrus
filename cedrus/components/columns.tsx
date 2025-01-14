@@ -25,12 +25,12 @@ export const columns: ColumnDef<Strategy>[] = [
         header: "Carbone évité (%)",
     },
     {
+        accessorKey: "status",
+        header: "Statut",
+    },
+    {
         id: "actions",
         header: "Actions",
         cell: () => <span>Actions ici</span>,
-    },
-    {
-        accessorKey: "status",
-        header: "Statut",
     }
 ];
