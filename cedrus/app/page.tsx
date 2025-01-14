@@ -1,4 +1,9 @@
+"use client";
+
 import { ListFilter } from "lucide-react";
+import { useState } from "react";
+
+import { Strategy } from "@/types/strategy";
 
 import { AddStrategyDialog } from "@/components/add-strategy-dialog";
 import { columns } from "@/components/columns";
@@ -6,11 +11,24 @@ import { DataTable } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+
 export default function Home() {
 
+	const [data, setData] = useState<Strategy[]>([]);
+
 	const handleAddStrategy = (newStrategy: { name: string; targetYear: number }) => {
-		console.log("Ajouté :", newStrategy);
+		const strategy: Strategy = {
+		id: Math.random().toString(36).substring(2, 11),
+		name: newStrategy.name,
+		targetYear: newStrategy.targetYear,
+		successRate: 0,
+		carbonAvoided: 0,
+		carbonAvoidedPercentage: 0,
+		status: "in_progress",
+		};
+		setData((prev) => [...prev, strategy]);
 	};
+
 
 	return (
 		<div className="min-h-screen mx-auto container p-8 font-[family-name:var(--font-geist-sans)]">
@@ -30,7 +48,7 @@ export default function Home() {
 					<AddStrategyDialog onAddStrategy={handleAddStrategy} />
 				</div>
 			</div>
-			<DataTable columns={columns} data={[]} />
+			<DataTable columns={columns} data={data} />
 		</div>
 	);
 }
