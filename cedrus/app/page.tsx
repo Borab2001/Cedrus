@@ -11,10 +11,32 @@ import { DataTable } from "@/components/data-table";
 import { Input } from "@/components/ui/input";
 
 
+const initialData: Strategy[] = [
+	{
+	  id: "1",
+	  name: "Top 15 Taxonomie + DPE + CRREM 2045",
+	  targetYear: 2045,
+	  successRate: 48,
+	  carbonAvoided: 666,
+	  carbonAvoidedPercentage: 13.7,
+	  status: "calculated",
+	},
+	{
+		id: "2",
+		name: "DPE B",
+		targetYear: 2050,
+		successRate: 65,
+		carbonAvoided: 840,
+		carbonAvoidedPercentage: 13.7,
+		status: "calculated",
+	}
+]
+
+
 export default function Home() {
 
 	const [data, setData] = useState<Strategy[]>([]);
-	const [filteredData, setFilteredData] = useState<Strategy[]>([]);
+	const [filteredData, setFilteredData] = useState<Strategy[]>(initialData);
 
 	const handleAddStrategy = (newStrategy: { name: string; targetYear: number }) => {
 		const strategy: Strategy = {
